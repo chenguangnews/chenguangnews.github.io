@@ -81,7 +81,7 @@
 		        
 					<a class="weixin" target="_blank" href="/assets/weixi.jpg" title="weixin"><i class="icon-weixin"></i></a>
 		        
-					<a class="mail" target="_blank" href="mailto:3413788717@qq.com" title="mail"><i class="icon-mail"></i></a>
+					<a class="mail" target="_blank" href="/3413788717@qq.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -120,7 +120,7 @@
 			        
 						<a class="weixin" target="_blank" href="/assets/weixi.jpg" title="weixin"><i class="icon-weixin"></i></a>
 			        
-						<a class="mail" target="_blank" href="mailto:3413788717@qq.com" title="mail"><i class="icon-mail"></i></a>
+						<a class="mail" target="_blank" href="/3413788717@qq.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -153,21 +153,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>@<a href="java笔记">TOC</a></p>
-<h2 id="java的集合类（哈希表）"><a href="#java的集合类（哈希表）" class="headerlink" title="java的集合类（哈希表）"></a>java的集合类（哈希表）</h2><p> <strong>1.什么是哈希表？</strong><br>哈希表也叫散列表(Hash table)，是根据关键码值(Key value)而直接进行访问的数据结构。<br>  也就是说，它通过把关键码值如图(关键字值)映射到表中一个位置(存储地址)来访问记录，以加快查找的速度。<br>  这个映射函数叫做散列函数， 存放记录的数组叫做散列表。</p>
-<p> <strong>图一为理想化情况：</strong><br> <img src="https://img-blog.csdnimg.cn/20190927104601903.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMjA3MTY1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>  <strong>2.哈希表的优势</strong><br>在介绍哈希表之前，我们先来了解一下数组和链表的优缺点：</p>
-<p>  数组的特点是：寻址容易，插入和删除困难。</p>
-<p>链表的特点是：寻址困难，插入和删除容易。</p>
-<p>结合两者的特性，做出一种寻址容易，插入删除也容易的数据结构，这就是我们要提起的哈希表，哈希表有多种不同的实现方法，我接下来解释的是最常用的一种方法——拉链法，我们可以理解为“链表的数组”。</p>
-<p><img src="https://img-blog.csdnimg.cn/2019092709403654.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMjA3MTY1,size_16,color_FFFFFF,t_70" alt="哈希表图"><br>   <strong>3.哈希表的冲突</strong><br>       如果图一的情况如下图<br>       <img src="https://img-blog.csdnimg.cn/20190927132936571.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMjA3MTY1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>哈希表的冲突会导致哈希表无效化，并且无法避免，既然无法避免，就只能尽量减少冲突带来的损失。</p>
-<p><strong>4.解决冲突的办法</strong><br>    通常有以下4种方法：</p>
-<p> 1.开放定址法：<br> &emsp;为哈希表表长增量序列，有3种取法：<br>&emsp;1.1线性探测再散列；<br>&emsp;1.2称为二次探测再散列；<br>&emsp;1.3称为伪随机探测再散列；<br>2.再哈希法：</p>
-<p>均是不同的哈希函数，即在同义词产生地址冲突时计算另一个哈希函数地址，直到冲突不再发生，这种方法不易产生聚集 ，但增加了计算时间；</p>
-<p>3.链地址法：</p>
-<p>将所有关键字为同义词的记录存储在同一线性表中。即在Hash 出来的哈希地址中不直接存Key ，而是存储一个Key 的链表 ，当发生冲突 时，将同义的Key 加入链表 ；</p>
-<p>4.公共溢出区：</p>
-<p>可以建立一个公共溢出区，用来存放有冲突的Key 。比如设立另一个哈希表，专门用来存放出现冲突的同义词。</p>
-
+        <h2 id="java的集合类（哈希表）"><a href="#java的集合类（哈希表）" class="headerlink" title="java的集合类（哈希表）"></a>java的集合类（哈希表）</h2>
+        
+          <a class="article-more-a" href="/2019/09/30/HasHTable/#more">more >></a>
+        
       
 
       
