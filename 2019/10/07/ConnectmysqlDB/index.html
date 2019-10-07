@@ -8,13 +8,20 @@
   <link rel="dns-prefetch" href="https://chenguangnews.github.io">
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="JDBC核心技术第一章  JDBC概述">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://chenguangnews.github.io/index.html">
+<meta property="og:url" content="https://chenguangnews.github.io/2019/10/07/ConnectmysqlDB/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="JDBC核心技术第一章  JDBC概述">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191004172338148.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMjA3MTY1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191005093557715.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMjA3MTY1,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-10-07T02:09:46.426Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="JDBC核心技术第一章  JDBC概述">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191004172338148.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMjA3MTY1,size_16,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -152,19 +159,104 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-ConnectmysqlDB" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-ConnectmysqlDB" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="JDBC核心技术"><a href="#JDBC核心技术" class="headerlink" title="JDBC核心技术"></a>JDBC核心技术</h2><p><strong>第一章  JDBC概述</strong><br>
-        
-          <a class="article-more-a" href="/2019/10/07/ConnectmysqlDB/#more">more >></a>
-        
+        <h2 id="JDBC核心技术"><a href="#JDBC核心技术" class="headerlink" title="JDBC核心技术"></a>JDBC核心技术</h2><p><strong>第一章  JDBC概述</strong><br> <a id="more"></a>      </p>
+<ul>
+<li><strong>1.什么是JDBC:</strong><br>JDBC(Java Database Connectivity)是一个独立于特定数据库管理系统、通用的SQL数据库存取和操作的公共接<br>口（一组API），定义了用来访问数据库的标准Java类库，（java.sql,javax.sql）使用这些类库可以以一种标<br>准的方法、方便地访问数据库资源。<br>JDBC为访问不同的数据库提供了一种统一的途径，为开发者屏蔽了一些细节问题。<br>JDBC的目标是使Java程序员使用JDBC可以连接任何提供了JDBC驱动程序的数据库系统，这样就使得程序员无需<br>对特定的数据库系统的特点有过多的了解，从而大大简化和加快了开发过程。<br><img src="https://img-blog.csdnimg.cn/20191004172338148.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMjA3MTY1,size_16,color_FFFFFF,t_70" alt="JDBC原理图"></li>
+</ul>
+<p> <strong>2.JDBC的体系结构</strong><br> JDBC接口（API）包括两个层次：</p>
+<ul>
+<li>面向应用的API：Java API，抽象接口，供应用程序开发人员使用（连接数据库，执行SQL语句，获得结<br>果）。<ul>
+<li>面向数据库的API：Java Driver API，供开发商开发数据库驱动程序用。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>JDBC是sun公司提供一套用于数据库操作的接口，java程序员只需要面向这套接口编程即可。 不同的数据库厂商，需要针对这套接口，提供不同实现。不同的实现的集合，即为不同数据库的驱动。 ————面向接口编程</p>
+<hr>
+<p><strong>3.JDBC编程步骤</strong><br><img src="https://img-blog.csdnimg.cn/20191005093557715.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMjA3MTY1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>  <strong>第二章  获取数据库的连接</strong></p>
+<p>   <strong>2.1 要素一：Driver接口实现类</strong></p>
+<p>   <strong>2.1.1 Driver接口介绍</strong></p>
+<ul>
+<li><p>java.sql.Driver 接口是所有 JDBC 驱动程序需要实现的接口。这个接口是提供给数据库厂商使用的，不同数据库厂商提供不同的实现。</p>
+</li>
+<li><p>在程序中不需要直接去访问实现了 Driver 接口的类，而是由驱动程序管理器类(java.sql.DriverManager)去调用。</p>
+</li>
+</ul>
+<p> <strong>2.1.2 加载驱动与注册JDBC驱动</strong></p>
+<ul>
+<li><p>加载驱动：加载 JDBC 驱动需调用 Class 类的静态方法 forName()，向其传递要加载的 JDBC 驱动的类名<br>Class.forName(“com.mysql.jdbc.Driver”);</p>
+</li>
+<li><p>注册驱动：DriverManager 类是驱动程序管理器类，负责管理驱动程序<br>使用DriverManager.registerDriver(com.mysql.jdbc.Driver)来注册驱动<br>通常不用显式调用 DriverManager 类的 registerDriver() 方法来注册驱动程序类的实例，因为 Driver 接口<br>的驱动程序类都包含了静态代码块，在这个静态代码块中，会调用 DriverManager.registerDriver() 方法<br>来注册自身的一个实例。`MySQL的Driver实现类的源码：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Driver</span> <span class="title">extend</span> <span class="title">NonRegisteringDriver</span> <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">sql</span>.<span class="title">Driver</span></span>&#123;</span><br><span class="line">   staic&#123;</span><br><span class="line">     <span class="keyword">try</span>&#123;</span><br><span class="line">         java.sql.DirverManager.registerDriver(<span class="keyword">new</span> Dirver());</span><br><span class="line">     &#125;<span class="keyword">catch</span>(SQLException)&#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Can't register driver!"</span>);</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.2要素二：URL</strong></p>
+<ul>
+<li>JDBC URL 用于标识一个被注册的驱动程序，驱动程序管理器通过这个 URL 选择正确的驱动程序，从而建立到<br>数据库的连接。</li>
+<li>JDBC URL的标准由三部分组成，各部分间用冒号分隔。</li>
+<li>几种常用数据库的 JDBC URL<br><strong>MySQL</strong>的连接URL编写方式：<br>jdbc:mysql://主机名称:mysql服务端口号/数据库名称<br>jdbc:mysql://localhost:3306/atguigu<br>jdbc:mysql://localhost:3306/atguigu?useUnicode=true&amp;characterEncoding=utf8（如果JDBC<br>程序与服务器端的字符集不一致，会导致乱码，那么可以通过参数指定服务器端的字符集）<br>jdbc:mysql://localhost:3306/atguigu?user=root&amp;password=123456<br><strong>Oracle 9i</strong>的连接URL编写方式：<br>jdbc:oracle:thin:@主机名称:oracle服务端口号:数据库名称<br>jdbc:oracle:thin:@localhost:1521:atguigu<br><strong>SQLServer</strong>的连接URL编写方式：<br>jdbc:sqlserver://主机名称:sqlserver服务端口号:DatabaseName=数据库名称<br>jdbc:sqlserver://localhost:1433:DatabaseName=atguigu</li>
+</ul>
+<p><strong>2.3 要素三：用户名和密码</strong></p>
+<ul>
+<li><p>user,password可以用“属性名=属性值”方式告诉数据库</p>
+</li>
+<li><p>可以调用 DriverManager 类的 getConnection() 方法建立到数据库的连接</p>
+</li>
+</ul>
+<p><strong>2.4 数据库连接方式举例<br>2.4.1 连接方式一</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testConnection1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">             <span class="comment">//1.提供java.sql.Driver接口实现类的对象</span></span><br><span class="line">                 Driver driver = <span class="keyword">null</span>;</span><br><span class="line">                 driver = <span class="keyword">new</span> com.mysql.jdbc.Driver();</span><br><span class="line">             <span class="comment">//2.提供url，指明具体操作的数据</span></span><br><span class="line">             <span class="comment">//jdbc:mysql://主机名称:mysql服务端口号/数据库名称</span></span><br><span class="line">                String url = <span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">             <span class="comment">//3.提供Properties的对象，指明用户名和密码</span></span><br><span class="line">                Properties info = <span class="keyword">new</span> Properties();</span><br><span class="line">                info.setProperty(<span class="string">"user"</span>, <span class="string">"root"</span>);</span><br><span class="line">                info.setProperty(<span class="string">"password"</span>, <span class="string">"abc123"</span>);</span><br><span class="line">              <span class="comment">//4.调用driver的connect()，获取连接</span></span><br><span class="line">                 Connection conn = driver.connect(url, info);</span><br><span class="line">                 System.out.println(conn);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>上述代码中显式出现了第三方数据库的API</code></pre><p><strong>2.4.2 连接方式二</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testConnection2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">              <span class="comment">//1.实例化Driver</span></span><br><span class="line">              String className = <span class="string">"com.mysql.jdbc.Driver"</span>;</span><br><span class="line">              Class clazz = Class.forName(className);</span><br><span class="line">              Driver driver = (Driver) clazz.newInstance();</span><br><span class="line">             <span class="comment">//2.提供url，指明具体操作的数据</span></span><br><span class="line">             String url = <span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">             <span class="comment">//3.提供Properties的对象，指明用户名和密码</span></span><br><span class="line">             Properties info = <span class="keyword">new</span> Properties();</span><br><span class="line">             info.setProperty(<span class="string">"user"</span>, <span class="string">"root"</span>);</span><br><span class="line">             info.setProperty(<span class="string">"password"</span>, <span class="string">"abc123"</span>);</span><br><span class="line">             <span class="comment">//4.调用driver的connect()，获取连接</span></span><br><span class="line">             Connection conn = driver.connect(url, info);</span><br><span class="line">             System.out.println(conn);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">              e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>相较于方式一，这里使用反射实例化Driver，不在代码中体现第三方数据库的API。体现了面向接口编程思想。</code></pre><p>  <strong>2.4.3 连接方式三</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testConnection3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">              <span class="comment">//1.数据库连接的4个基本要素：</span></span><br><span class="line">             String url = <span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">             String user = <span class="string">"root"</span>;</span><br><span class="line">             String password = <span class="string">"abc123"</span>;</span><br><span class="line">             String driverName = <span class="string">"com.mysql.jdbc.Driver"</span>;</span><br><span class="line">            <span class="comment">//2.实例化Driver</span></span><br><span class="line">            Class clazz = Class.forName(driverName);</span><br><span class="line">            Driver driver = (Driver) clazz.newInstance();</span><br><span class="line">            <span class="comment">//3.注册驱动</span></span><br><span class="line">           DriverManager.registerDriver(driver);</span><br><span class="line">           <span class="comment">//4.获取连接</span></span><br><span class="line">           Connection conn = DriverManager.getConnection(url, user, password);</span><br><span class="line">           System.out.println(conn);</span><br><span class="line">           &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>说明：使用DriverManager实现数据库的连接。体会获取连接必要的4个基本要素。</code></pre><p><strong>2.4.4 连接方式四</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testConnection4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//1.数据库连接的4个基本要素：</span></span><br><span class="line">            String url = <span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">            String user = <span class="string">"root"</span>;</span><br><span class="line">            String password = <span class="string">"abc123"</span>;</span><br><span class="line">            String driverName = <span class="string">"com.mysql.jdbc.Driver"</span>;</span><br><span class="line">          <span class="comment">//2.加载驱动 （①实例化Driver ②注册驱动）</span></span><br><span class="line">            Class.forName(driverName);</span><br><span class="line">          <span class="comment">//Driver driver = (Driver) clazz.newInstance();</span></span><br><span class="line">          <span class="comment">//3.注册驱动</span></span><br><span class="line">          <span class="comment">//DriverManager.registerDriver(driver);</span></span><br><span class="line">          <span class="comment">/*</span></span><br><span class="line"><span class="comment">            可以注释掉上述代码的原因，是因为在mysql的Driver类中声明有：</span></span><br><span class="line"><span class="comment">            static &#123;</span></span><br><span class="line"><span class="comment">         try &#123;</span></span><br><span class="line"><span class="comment">            DriverManager.registerDriver(new Driver());</span></span><br><span class="line"><span class="comment">            &#125; catch (SQLException var1) &#123;</span></span><br><span class="line"><span class="comment">           throw new RuntimeException("Can't register driver!");</span></span><br><span class="line"><span class="comment">          &#125;</span></span><br><span class="line"><span class="comment">          &#125;</span></span><br><span class="line"><span class="comment">          */</span></span><br><span class="line">         <span class="comment">//3.获取连接</span></span><br><span class="line">           Connection conn = DriverManager.getConnection(url, user, password);</span><br><span class="line">          System.out.println(conn);</span><br><span class="line">         &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">         e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>不必显式的注册驱动了。因为在DriverManager的源码中已经存在静态代码块，实现了驱动的注册。 </code></pre><p><strong>2.4.5 连接方式五(最终版)</strong> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testConnection5</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//1.加载配置文件</span></span><br><span class="line">            InputStream is =</span><br><span class="line">            ConnectionTest.class.getClassLoader().getResourceAsStream(<span class="string">"jdbc.properties"</span>);</span><br><span class="line">            Properties pros = <span class="keyword">new</span> Properties();</span><br><span class="line">            pros.load(is);</span><br><span class="line">            <span class="comment">//2.读取配置信息</span></span><br><span class="line">             String user = pros.getProperty(<span class="string">"user"</span>);</span><br><span class="line">             String password = pros.getProperty(<span class="string">"password"</span>);</span><br><span class="line">             String url = pros.getProperty(<span class="string">"url"</span>);</span><br><span class="line">             String driverClass = pros.getProperty(<span class="string">"driverClass"</span>);</span><br><span class="line">          <span class="comment">//3.加载驱动</span></span><br><span class="line">            Class.forName(driverClass);</span><br><span class="line">          <span class="comment">//4.获取连接</span></span><br><span class="line">            Connection conn = DriverManager.getConnection(url,user,password);</span><br><span class="line">            System.out.println(conn);</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>其中，配置文件声明在工程的src目录下：【jdbc.properties】
+user=root
+password=abc123
+url=jdbc:mysql://localhost:3306/test
+driverClass=com.mysql.jdbc.Driver</code></pre><p>使用配置文件的方式保存配置信息，在代码中加载配置文件<br>使用配置文件的好处：<br>①实现了代码和数据的分离，如果需要修改配置信息，直接在配置文件中修改，不需要深入代码<br>②如果修改了配置信息，省去重新编译的过程。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -173,16 +265,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/07/ConnectmysqlDB/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://chenguangnews.github.io/2019/10/07/ConnectmysqlDB/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/30/HasHTable/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -197,64 +348,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-HasHTable" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>TOC(table of content )</p>
-<h2 id="java的集合类（哈希表）"><a href="#java的集合类（哈希表）" class="headerlink" title="java的集合类（哈希表）"></a>java的集合类（哈希表）</h2>
-        
-          <a class="article-more-a" href="/2019/09/30/HasHTable/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/30/HasHTable/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JDBC核心技术"><span class="toc-number">1.</span> <span class="toc-text">JDBC核心技术</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
+  
+  
+  
 
   
+
+  
+
   
 
 
@@ -277,8 +396,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
